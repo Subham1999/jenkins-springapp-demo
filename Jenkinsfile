@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('MAVEN_BUILD') {
             steps {
-                sh './mvnw clean install'
+                sh './jenkins-demo/mvnw clean install'
             }
         }
     }
