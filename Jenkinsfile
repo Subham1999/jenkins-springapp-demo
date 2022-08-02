@@ -5,14 +5,16 @@ pipeline {
         pollSCM '*/30 * * * *'
     }
     stages {
-        stage('FILE_PERMISSION') {
-            steps {
-                sh 'sudo chmod a+x ./jenkins-demo/mvnw'
-            }
-        }
         stage('MAVEN_BUILD') {
             steps {
-                sh './jenkins-demo/mvnw clean install'
+                sh 'cd jenkins-demo'
+                sh 'mvn clean install'
+                sh 'cd ..'
+            }
+        }
+        stage('COPY_ARTIFACT') {
+            steps {
+                sh 'mv ./jenkins-demo/target/jenkins-demo-0.0.1-SNAPSHOT.jar ~/app.jar'
             }
         }
     }
