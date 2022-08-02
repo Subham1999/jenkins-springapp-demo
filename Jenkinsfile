@@ -7,9 +7,7 @@ pipeline {
     stages {
         stage('MAVEN_BUILD') {
             steps {
-                sh 'cd jenkins-demo'
-                sh 'mvn clean install'
-                sh 'cd ..'
+                sh 'cd ./jenkins-demo & mvn clean install & cd ..'
             }
         }
         stage('COPY_ARTIFACT') {
