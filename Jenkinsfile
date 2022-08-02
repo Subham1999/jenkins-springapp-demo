@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('FILE_PERMISSION') {
             steps {
-                sh 'sudo chmod u+x ./.'
+                sh 'sudo chmod a+x ./jenkins-demo/mvnw'
             }
         }
         stage('MAVEN_BUILD') {
